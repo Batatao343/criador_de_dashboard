@@ -1,4 +1,17 @@
-﻿import streamlit as st
+import os
+from dotenv import load_dotenv
+
+# ✅ Carrega a variável do secrets.toml (ou .env local)
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+
+# Agora pode importar o restante
+import streamlit as st
+import pandas as pd
+from criador_dashboard_automatico.main import run
+
+
+
+import streamlit as st
 import pandas as pd
 import tempfile
 import os
