@@ -1,0 +1,23 @@
+[project]
+name = "criador_dashboard_automatico"
+version = "0.1.0"
+description = "criador_dashboard_automatico using crewAI"
+authors = [{ name = "Guilherme Medeiros", email = "guilherme.smedeiros1@gmail.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.108.0,<1.0.0"
+]
+
+[project.scripts]
+criador_dashboard_automatico = "criador_dashboard_automatico.main:run"
+run_crew = "criador_dashboard_automatico.main:run"
+train = "criador_dashboard_automatico.main:train"
+replay = "criador_dashboard_automatico.main:replay"
+test = "criador_dashboard_automatico.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

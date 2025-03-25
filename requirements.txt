@@ -1,0 +1,22 @@
+# Core CrewAI
+crewai
+crewai-tools
+
+# Visualização e interface
+streamlit==1.32.2
+
+# Manipulação de dados
+pandas==2.1.4
+numpy==1.24.4
+
+# LLMs e RAG
+openai==1.14.2
+llama-index==0.10.19
+tiktoken==0.6.0
+
+# Configurações e ambiente
+python-dotenv==1.0.1
+pydantic==2.6.4
+
+# Utilidades
+tqdm==4.66.2

@@ -1,0 +1,42 @@
+clean_data_task:
+  description: >
+    Limpe o DataFrame enviado usando o tool "dataframe_cleaner_tool".
+    Certifique-se de remover colunas com dados totalmente faltantes e preencher os valores nulos restantes com médias ou modas.
+    Sua resposta deve conter um resumo do que foi limpo e o DataFrame resultante como JSON.
+  expected_output: >
+    Um JSON contendo: summary da limpeza + DataFrame limpo em formato JSON.
+  tools:
+    - dataframe_cleaner_tool
+  agent: data_cleaner_agent
+
+generate_insights_task:
+  description: >
+    Analyze the cleaned dataframe to identify trends, anomalies, and generate actionable insights for strategic decision-making.
+  expected_output: >
+    Actionable insights based on the cleaned data.
+  agent: insights_agent
+  context: [clean_data_task]
+
+generate_visualizations_task:
+  description: >
+    Analyze the cleaned data and suggest appropriate visualization types (e.g., line charts, bar charts, etc.) that best represent the data.
+  expected_output: >
+    Suitable visualization suggestions for the data.
+  agent: visualization_agent
+  context: [clean_data_task]
+
+build_prompt_task:
+  description: >
+    Combine the insights and visualization suggestions into a detailed prompt that guides the generation of code for an interactive dashboard.
+  expected_output: >
+    A comprehensive prompt for generating the dashboard code.
+  agent: prompt_builder_agent
+  context: [generate_insights_task, generate_visualizations_task]
+
+generate_python_code_task:
+  description: >
+    Generate Python code for an interactive dashboard using Streamlit based on the provided prompt.
+  expected_output: >
+    Python code for an interactive dashboard built with Streamlit.
+  agent: code_generation_agent
+  context: [build_prompt_task]
